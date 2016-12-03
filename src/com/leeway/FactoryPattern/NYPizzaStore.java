@@ -1,13 +1,30 @@
 package com.leeway.FactoryPattern;
 
+import com.leeway.FactoryPattern.Ingredients.NYPizzaIngredientFactory;
+import com.leeway.FactoryPattern.Ingredients.PizzaIngredientFactory;
+
 /**
  * Created by Lee Lorz on 11/10/2016.
  */
 public class NYPizzaStore extends PizzaStore {
 
     protected Pizza createPizza(String item) {
+        Pizza pizza = null;
+        PizzaIngredientFactory ingredientFactory = new NYPizzaIngredientFactory();
+
         if (item.equals("cheese")){
-            return new NYStyleChessePizza();
-        } else return null;
+            pizza = new CheesePizza(ingredientFactory);
+            pizza.setName("New York Style Cheese Pizza");
+        } else if (item.equals("veggie")) {
+            pizza = new VeggiePizza(ingredientFactory);
+            pizza.setName("New York Style Veggie Pizza");
+        } else if (item.equals("clam")) {
+            pizza = new ClamPizza(ingredientFactory);
+            pizza.setName("New York Style Clam Pizza");
+        } else if (item.equals("pepperoni")) {
+            pizza = new PepperoniPizza(ingredientFactory);
+            pizza.setName("New York Style Pepperoni Pizza");
+        }
+        return pizza;
     }
 }

@@ -1,5 +1,12 @@
 package com.leeway.FactoryPattern;
 
+import com.leeway.FactoryPattern.Ingredients.Cheeses.Cheese;
+import com.leeway.FactoryPattern.Ingredients.Clam.Clams;
+import com.leeway.FactoryPattern.Ingredients.Doughs.Dough;
+import com.leeway.FactoryPattern.Ingredients.Pepperonis.Pepperoni;
+import com.leeway.FactoryPattern.Ingredients.Sauces.Sauce;
+import com.leeway.FactoryPattern.Ingredients.Veggie.Veggies;
+
 import java.util.ArrayList;
 
 /**
@@ -7,8 +14,12 @@ import java.util.ArrayList;
  */
 public abstract class Pizza {
     String name;
-    String dough;
-    String sauce;
+    Dough dough;
+    Sauce sauce;
+    Cheese cheese;
+    Clams clam;
+    Veggies veggies[];
+    Pepperoni pepperoni;
     ArrayList toppings = new ArrayList();
 
     void prepare() {
@@ -35,5 +46,9 @@ public abstract class Pizza {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
